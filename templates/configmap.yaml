@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: flask-app-files
+  labels:
+    app: flask-app
+data:
+  app.py: |
+    {{ .Files.Get "files/app.py" | indent 4 }}
+  requirements.txt: |
+    {{ .Files.Get "files/requirements.txt" | indent 4 }}
+  templates/index.html: |
+    {{ .Files.Get "files/templates/index.html" | indent 4 }}
+  templates/country.html: |
+    {{ .Files.Get "files/templates/country.html" | indent 4 }}

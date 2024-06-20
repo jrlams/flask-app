@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ country.name.common }}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body style="font-family: Arial, sans-serif;
+line-height: 1.6;
+background-color: #f0f0f0;
+display: flex;
+justify-content: center;
+align-items: center;
+height: 100vh; /* Assure que le corps prend toute la hauteur de la vue */
+margin: 0;">
+    <div class="container" style="width: 80%;
+    max-width: 600px; /* Limite la largeur maximale pour des écrans larges */
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    text-align: center;">
+        <h1>{{ country.name.common }}</h1>
+        <ul>
+            <li><strong>Capital:</strong> {{ country.capital[0] if country.capital else 'N/A' }}</li>
+            <li><strong>Area:</strong> {{ country.area }} km²</li>
+            <!-- La clé 'leaders' n'existe pas dans l'API Restcountries. -->
+            <li><strong>President:</strong> N/A</li>
+            <li><strong>Currency:</strong> {{ country.currencies | map(attribute='name') | join(', ') if country.currencies else 'N/A' }}</li>
+            <li><strong>Population:</strong> {{ country.population }}</li>
+        </ul>
+        <a href="/">Back to search</a>
+    </div>
+</body>
+</html>
