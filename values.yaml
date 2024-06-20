@@ -2,7 +2,7 @@
 replicaCount: 1
 
 image:
-  repository: tiangolo/uwsgi-nginx-flask:python3.8
+  repository: your-dockerhub-username/flask-app
   pullPolicy: IfNotPresent
   tag: "latest"
 
@@ -39,7 +39,7 @@ ingress:
   annotations: {}
 
   hosts:
-    - host: flask-app.local
+    - host: chart-example.local
       paths:
         - path: /
           #pathType: ImplementationSpecific
